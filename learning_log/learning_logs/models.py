@@ -5,9 +5,20 @@ from django.db import models
 class Topic(models.Model):
     "a topic which the user is learning about"
     text = models.CharField(max_length=200)
-    date_added = models.DateTime(auto_now_add=True)
+    date_added = models.DateTimeField(auto_now_add=True) #sets the attribute to time when user will add a date
 
 
-    def _str_(self):
+    def __str__(self):
         '''return string representation of model'''
         return self.text
+
+class Entry(models.Model):
+    topic=models.ForeignKey(Topic, on_delete=models.CASCADE)
+    text=models.TextField()
+    date_added = models.DateTimeField(auto_now_add=True) #sets the attribute to time when user will add a date
+
+    class Meta:
+        verbose_name_plural = 'entries'
+
+    def __str__(self):
+        return f"{self.text[:50]}..."
