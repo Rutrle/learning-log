@@ -19,6 +19,7 @@ from . import views
 
 app_name='pizzas'
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('',views.index_view, name='index'  )
+    path('',views.index_view, name='index' ),
+    path('pizzas/',views.list_view, name='pizza_list' ),
+    path('pizzas/<int:pizza_id>/',views.detail_view, name='pizza_detail' )
 ]
