@@ -1,0 +1,10 @@
+<h2>Create new blog post</h2>
+
+
+
+<form action="{% url 'blogs:new' %}" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button name="submit">Add Post</button>
+
+</form>

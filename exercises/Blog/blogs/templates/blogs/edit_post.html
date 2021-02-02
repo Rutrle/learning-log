@@ -1,0 +1,10 @@
+<h2>Edit blog post</h2>
+
+
+
+<form action="{% url 'blogs:edit' blogpost.id %}" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button name="submit">edit Post</button>
+
+</form>
