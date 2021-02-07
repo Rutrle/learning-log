@@ -4,7 +4,7 @@ from django.db import models
 
 class Blogpost(models.Model):
     '''model for blogpost'''
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=200,unique=True)
     text = models.TextField()
     date = models.DateTimeField()
 
