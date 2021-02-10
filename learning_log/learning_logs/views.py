@@ -46,6 +46,7 @@ def new_topic(request):
 @login_required
 def new_entry(request, topic_id):
     topic = Topic.objects.get(id=topic_id)
+    check_topic_owner(topic, request)
     if request.method != 'POST':
         form = EntryForm()
     else:
