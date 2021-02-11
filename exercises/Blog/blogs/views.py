@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import Blogpost
 from .forms import CreateForm
-
+from django.contrib.auth.decorators import login_required
+from django.http import Http404
 # Create your views here.
 
 def index_view(request):
@@ -10,6 +11,7 @@ def index_view(request):
 
     return render(request, 'blogs/index.html', context)
 
+@login_required
 def create_view(request):
     if request.method != 'POST':
         form=CreateForm()
@@ -22,6 +24,7 @@ def create_view(request):
 
     return render(request, 'blogs/new_post.html',context) 
 
+@login_required
 def edit_view(request, blog_id):
     blogpost = Blogpost.objects.get(id=blog_id)
 
